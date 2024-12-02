@@ -1,0 +1,132 @@
+studio> db.createCollection("movies")
+studio> db.movies.insertOne({"title":"KGF","yearOfRelese":"2024","actor":"Yash","rating":4.9,"price":500})
+{
+  acknowledged: true,
+  insertedId: ObjectId('674d3fe1294c159befe66683')
+}
+studio> db.movies.insertMany([{"title":"Gladiator II","yearOfRelese":"2024","actor":"Paul Mescal","rating":4.5,"price":600},{"title":"The Godfather","yearOfRelese":"1972","actor":"abcdef","rating":4.1,"price":300},{"title":"The Dark Knight","yearOfRelese":"1994","actor":"Christian Bale","rating":4.7,"price":800])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:304)
+
+> 1 | db.movies.insertMany([{"title":"Gladiator II","yearOfRelese":"2024","actor":"Paul Mescal","rating":4.5,"price":600},{"title":"The Godfather","yearOfRelese":"1972","actor":"abcdef","rating":4.1,"price":300},{"title":"The Dark Knight","yearOfRelese":"1994","actor":"Christian Bale","rating":4.7,"price":800])
+    |                                                                                                                                                                                                                                                                                                                 ^
+  2 |
+
+studio> db.movies.insertMany([{"title":"Gladiator II","yearOfRelese":"2024","actor":"Paul Mescal","rating":4.5,"price":600},{"title":"The Godfather","yearOfRelese":"1972","actor":"abcdef","rating":4.1,"price":300},{"title":"The Dark Knight","yearOfRelese":"1994","actor":"Christian Bale","rating":4.7,"price":800}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('674d4412294c159befe66684'),
+    '1': ObjectId('674d4412294c159befe66685'),
+    '2': ObjectId('674d4412294c159befe66686')
+  }
+}
+studio> db.movies.find()
+[
+  {
+    _id: ObjectId('674d3fe1294c159befe66683'),
+    title: 'KGF',
+    yearOfRelese: '2024',
+    actor: 'Yash',
+    rating: 4.9,
+    price: 500
+  },
+  {
+    _id: ObjectId('674d4412294c159befe66684'),
+    title: 'Gladiator II',
+    yearOfRelese: '2024',
+    actor: 'Paul Mescal',
+    rating: 4.5,
+    price: 600
+  },
+  {
+    _id: ObjectId('674d4412294c159befe66685'),
+    title: 'The Godfather',
+    yearOfRelese: '1972',
+    actor: 'abcdef',
+    rating: 4.1,
+    price: 300
+  },
+  {
+    _id: ObjectId('674d4412294c159befe66686'),
+    title: 'The Dark Knight',
+    yearOfRelese: '1994',
+    actor: 'Christian Bale',
+    rating: 4.7,
+    price: 800
+  }
+]
+studio> db.movies.findOne()
+{
+  _id: ObjectId('674d3fe1294c159befe66683'),
+  title: 'KGF',
+  yearOfRelese: '2024',
+  actor: 'Yash',
+  rating: 4.9,
+  price: 500
+}
+studio> db.movies.findOne({"yearOfRelese":"1972"})
+{
+  _id: ObjectId('674d4412294c159befe66685'),
+  title: 'The Godfather',
+  yearOfRelese: '1972',
+  actor: 'abcdef',
+  rating: 4.1,
+  price: 300
+}
+studio> db.movies.insertOne({"title":"12 Angry Men","yearOfRelese":"1957","actor":"Henry Cobb","rating":4.9,"price":700})
+{
+  acknowledged: true,
+  insertedId: ObjectId('674d4a45294c159befe66687')
+}
+studio> db.movies.find({"rating":4.9})
+[
+  {
+    _id: ObjectId('674d3fe1294c159befe66683'),
+    title: 'KGF',
+    yearOfRelese: '2024',
+    actor: 'Yash',
+    rating: 4.9,
+    price: 500
+  },
+  {
+    _id: ObjectId('674d4a45294c159befe66687'),
+    title: '12 Angry Men',
+    yearOfRelese: '1957',
+    actor: 'Henry Cobb',
+    rating: 4.9,
+    price: 700
+  }
+]
+studio> db.movies.find({"title":"KGF","rating":4.9})
+[
+  {
+    _id: ObjectId('674d3fe1294c159befe66683'),
+    title: 'KGF',
+    yearOfRelese: '2024',
+    actor: 'Yash',
+    rating: 4.9,
+    price: 500
+  }
+]
+studio> db.movies.insertOne({"name":"abcdef","age":23,"class":12,"section":"A","hobies":["playing cricekt","watching movies","writing code"],"roll_no":38,"schoolDetails":{"name":"abc public school","address":"near parul university","city":"vadodara","state":"Gujarat"}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('674d4cca294c159befe66688')
+}
+studio> show collections
+movies
+studio> db.movies.drop()
+true
+studio> show collections
+
+studio> db.dropDatabase()
+{ ok: 1, dropped: 'studio' }
+studio> show dbs
+admin        40.00 KiB
+college      80.00 KiB
+config      108.00 KiB
+local        72.00 KiB
+school       72.00 KiB
+university   72.00 KiB
+studio> 
