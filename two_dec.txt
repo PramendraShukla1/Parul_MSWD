@@ -1,3 +1,4 @@
+test> use studio 
 studio> db.createCollection("movies")
 studio> db.movies.insertOne({"title":"KGF","yearOfRelese":"2024","actor":"Yash","rating":4.9,"price":500})
 {
